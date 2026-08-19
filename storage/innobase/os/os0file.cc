@@ -5657,7 +5657,7 @@ static dberr_t os_file_copy_read_write(os_file_t src_file,
   uint request_size;
   const uint BUF_SIZE = 4 * UNIV_SECTOR_SIZE;
 
-  char buf[BUF_SIZE + UNIV_SECTOR_SIZE];
+  char buf[BUF_SIZE + UNIV_SECTOR_SIZE] = {};
   char *buf_ptr;
 
   buf_ptr = static_cast<char *>(ut_align(buf, UNIV_SECTOR_SIZE));

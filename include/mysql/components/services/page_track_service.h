@@ -25,6 +25,8 @@
 #define MYSQL_PAGE_TRACK_SERVICE_H
 
 #include <mysql/components/service.h>
+#include <cstddef>
+#include <cstdint>
 #include <functional>
 
 #ifdef __cplusplus
