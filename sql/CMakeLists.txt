@@ -750,8 +750,16 @@ ENDIF()
 IF(MY_COMPILER_IS_GNU_OR_CLANG)
   ADD_COMPILE_FLAGS(${CMAKE_CURRENT_BINARY_DIR}/sql_yacc.cc
                     ${CMAKE_CURRENT_BINARY_DIR}/sql_hints.yy.cc
-                    COMPILE_FLAGS "-Wno-undef")
-
+                    COMPILE_FLAGS
+                    "-Wno-undef"
+                    "-Wno-free-nonheap-object"
+                    "-Wno-unused-label")
+  ADD_COMPILE_FLAGS(auth/sql_authorization.cc
+                    sql_db.cc
+                    COMPILE_FLAGS "-Wno-range-loop-construct")
+  ADD_COMPILE_FLAGS(sql_cursor.cc
+                    sql_prepare.cc
+                    COMPILE_FLAGS "-Wno-mismatched-new-delete")
 ENDIF()
 
 MY_CHECK_CXX_COMPILER_FLAG("-fno-builtin-memcmp" HAVE_NO_BUILTIN_MEMCMP)
